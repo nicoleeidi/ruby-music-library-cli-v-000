@@ -6,6 +6,7 @@ class MusicLibraryController
   def call
     puts "Welcome to your music library!"
     puts "To list all of your songs, enter 'list songs'."
+#<<<<<<< HEAD
     puts "To list all of the artists in your library, enter 'list artists'."
     puts "To list all of the genres in your library, enter 'list genres'."
     puts "To list all of the songs by a particular artist, enter 'list artist'."
@@ -13,10 +14,14 @@ class MusicLibraryController
     puts "To play a song, enter 'play song'."
     puts "To quit, type 'exit'."
     puts "What would you like to do?"
+#=======
+
+#>>>>>>> 2a84f8f7e50a4f9385cd7d0f7d7208cb2cdc9317
 
     input= ""
     while(input != "exit")
       input= gets.strip
+#<<<<<<< HEAD
       case input
       when 'list songs'
         self.list_songs
@@ -36,6 +41,10 @@ class MusicLibraryController
     end
 
 
+# =======
+#     end
+#   end
+# >>>>>>> 2a84f8f7e50a4f9385cd7d0f7d7208cb2cdc9317
   def list_songs
     Song.all.sort{|a,b| a.name <=> b.name}.each_with_index do |song, index|
       puts "#{index + 1}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
@@ -59,7 +68,11 @@ class MusicLibraryController
     i=1
     if Artist.find_by_name(artist_name) != nil
       Artist.find_by_name(artist_name).songs.sort{|a,b| a.name <=> b.name}.each do |song|
+#<<<<<<< HEAD
         puts "#{i}. #{song.name} - #{song.genre.name}"
+# =======
+#         puts "#{i}. #{song.name} - #{song.genre}"
+# >>>>>>> 2a84f8f7e50a4f9385cd7d0f7d7208cb2cdc9317
         i+=1
       end
     end
@@ -73,6 +86,7 @@ class MusicLibraryController
 
 
   def list_songs_by_genre
+#<<<<<<< HEAD
     puts "Please enter the name of a genre:"
     artist_name= gets.strip
     i=1
@@ -93,4 +107,11 @@ class MusicLibraryController
     end
   end
 
+# =======
+#   end
+#   def play_song
+#   end
+# 
+# 
+# >>>>>>> 2a84f8f7e50a4f9385cd7d0f7d7208cb2cdc9317
 end
